@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<math.h>
+int number[10],a,n,ans;
+int place(int row, int col){
+   int k;
+   for(k=1;k<col;k++){
+     if((number[k]==row)||(abs(number[k]-row)==abs(k-col))) return 0;
+   }
+   return 1;
+}
+void permutation (int at, int n)
+{
+    int i;
+    if (at==n+1)
+    {
+        for (i=1; i<=n; i++) printf(" %d",number[i]);
+        printf ("\n") ;
+        return;
+    }
+
+	for(i=1;i<=n;i++)
+	    if(place(i,at)){
+	    number [at]=i;
+	    permutation(at+1,n);
+        }
+}
+
+int main(){
+    int t;
+    scanf("%d %d",&a,&n);
+    permutation(a,n);
+
+return 0;
+}
